@@ -2,7 +2,7 @@ import BotCard from './BotCard';
 
 function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
   
-  // Bot Specs View (integrated directly) - STAYS THE SAME
+  // Bot Specs View (integrated directly)
   const renderBotSpecs = () => {
     if (!selectedBot) return null;
 
@@ -18,6 +18,11 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
         case 'Captain': return 'bg-cyber-yellow text-cyber-dark';
         default: return 'bg-gray-600';
       }
+    };
+
+    const handleEnlist = () => {
+      onEnlist(selectedBot);
+      onBotSelect(null); // Close the modal after enlist
     };
 
     return (
@@ -98,7 +103,7 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
 
                 {/* Enlist Button */}
                 <button
-                  onClick={() => onEnlist(selectedBot)}
+                  onClick={handleEnlist}
                   className="w-full bg-cyber-green hover:bg-cyber-cyan text-cyber-dark font-orbitron text-xl py-4 px-6 rounded-lg transition-all duration-200 border-2 border-cyber-green hover:border-cyber-cyan shadow-cyber"
                 >
                   ENLIST TO ARMY
@@ -111,6 +116,7 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
     );
   };
 
+  // Rest of the component remains the same...
   // Main Collection View
   if (bots.length === 0) {
     return (
