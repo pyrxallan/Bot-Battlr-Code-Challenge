@@ -1,4 +1,6 @@
 function BotCard({ bot, onBotClick, onDischarge, isInArmy }) {
+  const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
+
   const getBotClassColor = (botClass) => {
     const colors = {
       'Support': 'text-green-400',
@@ -11,74 +13,88 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy }) {
     return colors[botClass] || 'text-gray-400';
   };
 
-  const getBotClassIcon = (botClass) => {
-    const icons = {
-      'Support': '🛠️',
-      'Medic': '🏥',
-      'Assault': '⚔️',
-      'Defender': '🛡️',
-      'Captain': '⭐',
-      'Witch': '🔮'
-    };
-    return icons[botClass] || '🤖';
-  };
 
   return (
-    <div 
-      className={`bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer border-2 ${
-        isInArmy ? 'border-purple-500' : 'border-gray-700 hover:border-blue-500'
-      }`}
-    >
-      <div className="relative" onClick={onBotClick}>
+    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700 hover:border-purple-500 transition-all duration-300">
+      {/* Bot Image */}
+      <div className="relative">
         <img 
-          src={bot.avatar_url} 
-          alt={bot.name}
+          src={avatar_url} 
+          alt={name}
           className="w-full h-48 object-cover"
         />
-        {isInArmy && (
-          <div className="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold">
-            ENLISTED
-          </div>
-        )}
-        {onDischarge && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDischarge();
-            }}
-            className="absolute top-2 left-2 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
-          >
-            ✕ 
-          </button>
-        )}
+        <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-sm font-bold ${getBotClassColor(bot_class)}`}>
+          {bot_class}
+        </div>
       </div>
-      
+
+      {/* Bot Info */}
       <div className="p-4">
-        <h3 className="text-xl font-bold mb-2">{bot.name}</h3>
-        <p className={`text-sm mb-3 font-semibold ${getBotClassColor(bot.bot_class)}`}>
-          {getBotClassIcon(bot.bot_class)} {bot.bot_class}
-        </p>
+        <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
+        <p className="text-gray-400 text-sm italic mb-3">"{catchphrase}"</p>
         
-        <div className="space-y-2 mb-3">
+        {/* Stats */}
+        <div className="space-y-2 mb-4">
           <div className="flex justify-between items-center">
-            <span className="text-gray-400 text-sm">Health:</span>
-            <span className="font-bold">{bot.health}</span>
+            <span className="text-gray-400">Health:</span>
+            <div className="w-24 bg-gray-700 rounded-full h-2">
+              <div 
+                className="bg-green-500 h-2 rounded-full" 
+                style={{ width: `${health}%` }}
+              ></div>
+            </div>
+            <span className="text-white text-sm w-8 text-right">{health}</span>
           </div>
+          
           <div className="flex justify-between items-center">
-            <span className="text-gray-400 text-sm">Damage:</span>
-            <span className="font-bold">{bot.damage}</span>
+            <span className="text-gray-400">Damage:</span>
+            <div className="w-24 bg-gray-700 rounded-full h-2">
+              <div 
+                className="bg-red-500 h-2 rounded-full" 
+                style={{ width: `${damage}%` }}
+              ></div>
+            </div>
+            <span className="text-white text-sm w-8 text-right">{damage}</span>
           </div>
+          
           <div className="flex justify-between items-center">
-            <span className="text-gray-400 text-sm">Armor:</span>
-            <span className="font-bold">{bot.armor}</span>
+            <span className="text-gray-400">Armor:</span>
+            <div className="w-24 bg-gray-700 rounded-full h-2">
+              <div 
+                className="bg-blue-500 h-2 rounded-full" 
+                style={{ width: `${armor}%` }}
+              ></div>
+            </div>
+            <span className="text-white text-sm w-8 text-right">{armor}</span>
           </div>
         </div>
-        
-        <p className="text-xs text-gray-500 italic mb-3 truncate">
-          "{bot.catchphrase}"
-        </p>
-        
-        
+
+        {/* Action Buttons */}
+        <div className="flex space-x-2">
+          {isInArmy ? (
+            <>
+              <button
+                onClick={onBotClick}
+                className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded transition"
+              >
+                Release
+              </button>
+              <button
+                onClick={onDischarge}
+                className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition"
+              >
+                Discharge
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={onBotClick}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition"
+            >
+              Enlist
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
