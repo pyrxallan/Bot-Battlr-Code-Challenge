@@ -1,3 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --cyber-dark: #0a0a0a;
+  --cyber-darker: #050505;
+  --cyber-green: #00ff41;
+  --cyber-cyan: #00e5ff;
+  --cyber-blue: #0066ff;
+  --cyber-purple: #8a2be2;
+  --cyber-red: #ff003c;
+  --cyber-yellow: #ffff00;
+  --cyber-white: #e0e0e0;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--cyber-dark);
+  color: var(--cyber-white);
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Cyber theme colors */
+.bg-cyber-dark { background-color: var(--cyber-dark); }
+.bg-cyber-darker { background-color: var(--cyber-darker); }
+.text-cyber-green { color: var(--cyber-green); }
+.text-cyber-cyan { color: var(--cyber-cyan); }
+.text-cyber-blue { color: var(--cyber-blue); }
+.text-cyber-purple { color: var(--cyber-purple); }
+.text-cyber-red { color: var(--cyber-red); }
+.text-cyber-yellow { color: var(--cyber-yellow); }
+.text-cyber-white { color: var(--cyber-white); }
+
+.bg-cyber-green { background-color: var(--cyber-green); }
+.bg-cyber-cyan { background-color: var(--cyber-cyan); }
+.bg-cyber-blue { background-color: var(--cyber-blue); }
+.bg-cyber-purple { background-color: var(--cyber-purple); }
+.bg-cyber-red { background-color: var(--cyber-red); }
+.bg-cyber-yellow { background-color: var(--cyber-yellow); }
+
+.border-cyber-green { border-color: var(--cyber-green); }
+.border-cyber-cyan { border-color: var(--cyber-cyan); }
+.border-cyber-blue { border-color: var(--cyber-blue); }
+.border-cyber-purple { border-color: var(--cyber-purple); }
+.border-cyber-red { border-color: var(--cyber-red); }
+.border-cyber-yellow { border-color: var(--cyber-yellow); }
+
+/* Cyber shadows */
+.shadow-cyber {
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1),
+              0 0 40px rgba(0, 102, 255, 0.1),
+              inset 0 0 20px rgba(0, 255, 65, 0.05);
+}
