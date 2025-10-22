@@ -13,6 +13,13 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
     }
   };
 
+  const handleDischarge = (e) => {
+    e.stopPropagation(); // Prevent triggering the card click
+    if (window.confirm(`Are you sure you want to discharge ${name} forever?`)) {
+      onDischarge(bot.id);
+    }
+  };
+
   return (
     <div 
       className="bg-cyber-dark rounded-lg overflow-hidden shadow-cyber border-2 border-cyber-blue hover:border-cyber-cyan transition-all duration-300 hover:transform hover:scale-105 relative"
@@ -21,12 +28,9 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
       {/* Discharge Button (only in army) */}
       {isInArmy && !showDetails && (
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onDischarge(bot.id);
-          }}
-          className="absolute top-2 left-2 bg-cyber-red hover:bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 transition-all duration-200"
-          title="Discharge Bot"
+          onClick={handleDischarge}
+          className="absolute top-2 left-2 bg-cyber-red hover:bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 transition-all duration-200 shadow-lg"
+          title="Discharge Bot Forever"
         >
           ×
         </button>
@@ -42,6 +46,11 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         <div className={`absolute top-2 right-2 px-3 py-1 rounded-full text-sm font-bold font-orbitron ${getBotClassColor(bot_class)}`}>
           {bot_class}
         </div>
+        {isInArmy && !showDetails && (
+          <div className="absolute bottom-2 left-2 bg-cyber-green text-cyber-dark px-2 py-1 rounded text-sm font-orbitron">
+            Click to Release
+          </div>
+        )}
       </div>
 
       {/* Bot Info */}
@@ -52,22 +61,23 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         {/* Stats */}
         <div className="space-y-2">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">Health:</span>
+            <span className="text-cyber-cyan">HP:</span>
             <span className="text-cyber-green font-bold">{health}</span>
           </div>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">Damage:</span>
+            <span className="text-cyber-cyan">DMG:</span>
             <span className="text-cyber-red font-bold">{damage}</span>
           </div>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">Armor:</span>
+            <span className="text-cyber-cyan">ARM:</span>
             <span className="text-cyber-blue font-bold">{armor}</span>
           </div>
         </div>
 
+        {/* Click to view details (only in collection) */}
         {showDetails && (
           <div className="mt-4 text-center">
-            <span className="text-cyber-cyan text-sm font-orbitron">Click to view Bot Specs</span>
+            <span className="text-cyber-cyan text-sm font-orbitron">Click to view details</span>
           </div>
         )}
       </div>
