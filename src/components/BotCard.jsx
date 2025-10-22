@@ -52,15 +52,15 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         {/* Stats */}
         <div className="space-y-2">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">HP:</span>
+            <span className="text-cyber-cyan">Health:</span>
             <span className="text-cyber-green font-bold">{health}</span>
           </div>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">DMG:</span>
+            <span className="text-cyber-cyan">Damage:</span>
             <span className="text-cyber-red font-bold">{damage}</span>
           </div>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-cyber-cyan">ARM:</span>
+            <span className="text-cyber-cyan">Armor:</span>
             <span className="text-cyber-blue font-bold">{armor}</span>
           </div>
         </div>
