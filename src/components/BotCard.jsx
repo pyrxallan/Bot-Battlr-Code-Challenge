@@ -1,100 +1,75 @@
-function BotCard({ bot, onBotClick, onDischarge, isInArmy }) {
-  const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
+function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }) {
+  const { name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
 
   const getBotClassColor = (botClass) => {
-    const colors = {
-      'Support': 'text-green-400',
-      'Medic': 'text-pink-400',
-      'Assault': 'text-red-400',
-      'Defender': 'text-blue-400',
-      'Captain': 'text-yellow-400',
-      'Witch': 'text-purple-400'
-    };
-    return colors[botClass] || 'text-gray-400';
+    switch (botClass) {
+      case 'Assault': return 'bg-cyber-red';
+      case 'Defender': return 'bg-cyber-blue';
+      case 'Support': return 'bg-cyber-green';
+      case 'Medic': return 'bg-cyber-cyan text-cyber-dark';
+      case 'Witch': return 'bg-cyber-purple';
+      case 'Captain': return 'bg-cyber-yellow text-cyber-dark';
+      default: return 'bg-gray-600';
+    }
   };
 
-
   return (
-    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700 hover:border-purple-500 transition-all duration-300">
+    <div 
+      className="bg-cyber-dark rounded-lg overflow-hidden shadow-cyber border-2 border-cyber-blue hover:border-cyber-cyan transition-all duration-300 hover:transform hover:scale-105 relative"
+      onClick={showDetails ? onBotClick : undefined}
+    >
+      {/* Discharge Button (only in army) */}
+      {isInArmy && !showDetails && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onDischarge(bot.id);
+          }}
+          className="absolute top-2 left-2 bg-cyber-red hover:bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 transition-all duration-200"
+          title="Discharge Bot"
+        >
+          ×
+        </button>
+      )}
+
       {/* Bot Image */}
-      <div className="relative">
+      <div className="relative cursor-pointer">
         <img 
           src={avatar_url} 
           alt={name}
           className="w-full h-48 object-cover"
         />
-        <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-sm font-bold ${getBotClassColor(bot_class)}`}>
+        <div className={`absolute top-2 right-2 px-3 py-1 rounded-full text-sm font-bold font-orbitron ${getBotClassColor(bot_class)}`}>
           {bot_class}
         </div>
       </div>
 
       {/* Bot Info */}
       <div className="p-4">
-        <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
-        <p className="text-gray-400 text-sm italic mb-3">"{catchphrase}"</p>
+        <h3 className="text-xl font-orbitron text-cyber-green mb-1">{name}</h3>
+        <p className="text-cyber-cyan text-sm italic mb-3 truncate">"{catchphrase}"</p>
         
         {/* Stats */}
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-400">Health:</span>
-            <div className="w-24 bg-gray-700 rounded-full h-2">
-              <div 
-                className="bg-green-500 h-2 rounded-full" 
-                style={{ width: `${health}%` }}
-              ></div>
-            </div>
-            <span className="text-white text-sm w-8 text-right">{health}</span>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center text-sm">
+            <span className="text-cyber-cyan">HP:</span>
+            <span className="text-cyber-green font-bold">{health}</span>
           </div>
-          
-          <div className="flex justify-between items-center">
-            <span className="text-gray-400">Damage:</span>
-            <div className="w-24 bg-gray-700 rounded-full h-2">
-              <div 
-                className="bg-red-500 h-2 rounded-full" 
-                style={{ width: `${damage}%` }}
-              ></div>
-            </div>
-            <span className="text-white text-sm w-8 text-right">{damage}</span>
+          <div className="flex justify-between items-center text-sm">
+            <span className="text-cyber-cyan">DMG:</span>
+            <span className="text-cyber-red font-bold">{damage}</span>
           </div>
-          
-          <div className="flex justify-between items-center">
-            <span className="text-gray-400">Armor:</span>
-            <div className="w-24 bg-gray-700 rounded-full h-2">
-              <div 
-                className="bg-blue-500 h-2 rounded-full" 
-                style={{ width: `${armor}%` }}
-              ></div>
-            </div>
-            <span className="text-white text-sm w-8 text-right">{armor}</span>
+          <div className="flex justify-between items-center text-sm">
+            <span className="text-cyber-cyan">ARM:</span>
+            <span className="text-cyber-blue font-bold">{armor}</span>
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex space-x-2">
-          {isInArmy ? (
-            <>
-              <button
-                onClick={onBotClick}
-                className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded transition"
-              >
-                Release
-              </button>
-              <button
-                onClick={onDischarge}
-                className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition"
-              >
-                Discharge
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={onBotClick}
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition"
-            >
-              Enlist
-            </button>
-          )}
-        </div>
+        {showDetails && (
+          <div className="mt-4 text-center">
+            <span className="text-cyber-cyan text-sm font-orbitron">Click to view Bot Specs</span>
+          </div>
+        )}
       </div>
     </div>
   );
