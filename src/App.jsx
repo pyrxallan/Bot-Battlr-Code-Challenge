@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import YourBotArmy from './components/YourBotArmy';
-import BotCollection from './components/BotCollection';
+import YourBotArmy from './Components/YourBotArmy';
+import BotCollection from './Components/BotCollection';
 
 function App() {
   const [bots, setBots] = useState([]);
@@ -59,8 +59,8 @@ function App() {
         <p className="text-center mt-2 text-gray-200">Build Your Ultimate Bot Army</p>
       </header>
 
-      <YourBotArmy 
-        army={army} 
+      <YourBotArmy
+        army={army}
         onRelease={releaseBot}
         onDischarge={dischargeBot}
       />
