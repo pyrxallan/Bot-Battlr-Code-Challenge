@@ -4,9 +4,10 @@ function YourBotArmy({ army, onRelease, onDischarge }) {
   if (army.length === 0) {
     return (
       <div className="max-w-7xl mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4 text-purple-400">Your Bot Army</h2>
-        <div className="bg-gray-800 rounded-lg p-8 text-center text-gray-400">
-          No bots enlisted yet. Click on a bot below to add them to your army!
+        <h2 className="text-2xl font-orbitron text-cyber-purple mb-4">YOUR BOT ARMY</h2>
+        <div className="bg-cyber-dark border-2 border-cyber-purple rounded-lg p-8 text-center">
+          <p className="text-cyber-cyan text-lg mb-2">No bots enlisted yet</p>
+          <p className="text-gray-400">Click on a bot in the collection to view details and enlist!</p>
         </div>
       </div>
     );
@@ -14,10 +15,10 @@ function YourBotArmy({ army, onRelease, onDischarge }) {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4 text-purple-400">
-        Your Bot Army ({army.length})
+      <h2 className="text-2xl font-orbitron text-cyber-purple mb-4">
+        YOUR BOT ARMY ({army.length}/6)
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
         {army.map(bot => (
           <BotCard 
             key={bot.id}
