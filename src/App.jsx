@@ -47,7 +47,7 @@ function App() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading Bot Battlr...</div>
+        <div className="text-white text-2xl">Loading the Bots for you. You'll have your army in a few...</div>
       </div>
     );
   }
