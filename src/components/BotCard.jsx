@@ -40,6 +40,17 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy }) {
             ENLISTED
           </div>
         )}
+        {onDischarge && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onDischarge();
+            }}
+            className="absolute top-2 left-2 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
+          >
+            ✕ 
+          </button>
+        )}
       </div>
       
       <div className="p-4">
@@ -67,17 +78,7 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy }) {
           "{bot.catchphrase}"
         </p>
         
-        {onDischarge && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onDischarge();
-            }}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
-          >
-            ✕ Discharge Forever
-          </button>
-        )}
+        
       </div>
     </div>
   );
