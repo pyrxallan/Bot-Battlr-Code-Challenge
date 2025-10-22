@@ -20,10 +20,17 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
     }
   };
 
+  // Handle card click - different behavior based on context
+  const handleCardClick = () => {
+    if (onBotClick) {
+      onBotClick();
+    }
+  };
+
   return (
     <div 
-      className="bg-cyber-dark rounded-lg overflow-hidden shadow-cyber border-2 border-cyber-blue hover:border-cyber-cyan transition-all duration-300 hover:transform hover:scale-105 relative"
-      onClick={showDetails ? onBotClick : undefined}
+      className="bg-cyber-dark rounded-lg overflow-hidden shadow-cyber border-2 border-cyber-blue hover:border-cyber-cyan transition-all duration-300 hover:transform hover:scale-105 relative cursor-pointer"
+      onClick={handleCardClick}
     >
       {/* Discharge Button (only in army) */}
       {isInArmy && !showDetails && (
@@ -37,7 +44,7 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
       )}
 
       {/* Bot Image */}
-      <div className="relative cursor-pointer">
+      <div className="relative">
         <img 
           src={avatar_url} 
           alt={name}
@@ -47,7 +54,7 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
           {bot_class}
         </div>
         {isInArmy && !showDetails && (
-          <div className="absolute bottom-2 left-2 bg-cyber-green text-cyber-dark px-2 py-1 rounded text-sm font-orbitron">
+          <div className="absolute bottom-2 left-2 bg-cyber-cyan text-cyber-dark px-2 py-1 rounded text-sm font-orbitron">
             Click to Release
           </div>
         )}
