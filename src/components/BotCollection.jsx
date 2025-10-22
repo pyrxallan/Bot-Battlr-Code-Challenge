@@ -2,7 +2,7 @@ import BotCard from './BotCard';
 
 function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
   
-  // Bot Specs View (integrated directly)
+  // Bot Specs View (integrated directly) - STAYS THE SAME
   const renderBotSpecs = () => {
     if (!selectedBot) return null;
 
