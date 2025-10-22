@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import YourBotArmy from './components/YourBotArmy';
 import BotCollection from './components/BotCollection';
+import SortBar from './components/SortBar';
 
 function App() {
   const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedBot, setSelectedBot] = useState(null);
+  const [sortBy, setSortBy] = useState('');
+  const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8001/bots')
@@ -20,20 +24,44 @@ function App() {
       });
   }, []);
 
+  // Filter and sort bots
+  const getFilteredAndSortedBots = () => {
+    let filteredBots = bots;
+    
+    if (filters.length > 0) {
+      filteredBots = filteredBots.filter(bot => filters.includes(bot.bot_class));
+    }
+    
+    if (sortBy) {
+      filteredBots = [...filteredBots].sort((a, b) => b[sortBy] - a[sortBy]);
+    }
+    
+    return filteredBots;
+  };
+
   const enlistBot = (bot) => {
-    // Bot can only be enlisted once
+    const classExists = army.some(b => b.bot_class === bot.bot_class);
+    if (classExists) {
+      alert(`You already have a ${bot.bot_class} in your army! Only one bot per class allowed.`);
+      return;
+    }
+    
     if (!army.find(b => b.id === bot.id)) {
       setArmy([...army, bot]);
+      setBots(bots.filter(b => b.id !== bot.id));
+      setSelectedBot(null);
     }
   };
 
   const releaseBot = (botId) => {
-    // Remove bot from army (bot stays in collection)
+    const botToRelease = army.find(bot => bot.id === botId);
     setArmy(army.filter(bot => bot.id !== botId));
+    if (botToRelease) {
+      setBots([...bots, botToRelease]);
+    }
   };
 
   const dischargeBot = (botId) => {
-    // Delete bot from backend and remove from both army and collection
     fetch(`http://localhost:8001/bots/${botId}`, {
       method: 'DELETE',
     })
@@ -46,17 +74,21 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading the Bots for you. You'll have your army in a few...</div>
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <div className="text-cyber-green text-2xl font-orbitron">Initializing Bot Battlr...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <header className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 shadow-lg">
-        <h1 className="text-4xl font-bold text-center">Bot Battlr</h1>
-        <p className="text-center mt-2 text-gray-200">Build Your Ultimate Bot Army</p>
+    <div className="min-h-screen bg-gray-950 text-cyber-white font-roboto-mono">
+      <header className="bg-cyber-dark border-b-2 border-cyber-blue p-6 shadow-cyber">
+        <h1 className="text-5xl font-bold text-center font-orbitron text-cyber-green mb-2">
+          BOT BATTLR
+        </h1>
+        <p className="text-center text-cyber-cyan text-lg">
+          Build Your Ultimate Cybernetic Army
+        </p>
       </header>
 
       <YourBotArmy
@@ -65,9 +97,18 @@ function App() {
         onDischarge={dischargeBot}
       />
 
+      <SortBar 
+        sortBy={sortBy}
+        onSortChange={setSortBy}
+        filters={filters}
+        onFiltersChange={setFilters}
+      />
+      
       <BotCollection 
-        bots={bots} 
+        bots={getFilteredAndSortedBots()} 
         army={army}
+        selectedBot={selectedBot}
+        onBotSelect={setSelectedBot}
         onEnlist={enlistBot}
       />
     </div>
