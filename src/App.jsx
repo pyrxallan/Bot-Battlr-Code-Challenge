@@ -62,20 +62,21 @@ function App() {
   };
 
   const dischargeBot = (botId) => {
-    fetch(`http://localhost:8001/bots/${botId}`, {
-      method: 'DELETE',
+  // Delete bot from backend and remove from both army and collection
+  fetch(`http://localhost:8001/bots/${botId}`, {
+    method: 'DELETE',
+  })
+    .then(() => {
+      setBots(bots.filter(bot => bot.id !== botId));
+      setArmy(army.filter(bot => bot.id !== botId));
     })
-      .then(() => {
-        setBots(bots.filter(bot => bot.id !== botId));
-        setArmy(army.filter(bot => bot.id !== botId));
-      })
-      .catch(err => console.error('Error deleting bot:', err));
-  };
+    .catch(err => console.error('Error deleting bot:', err));
+};
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-cyber-green text-2xl font-orbitron">Initializing Bot Battlr...</div>
+        <div className="text-cyber-green text-2xl font-orbitron">You'll have your Bot Army in a few moments...</div>
       </div>
     );
   }
