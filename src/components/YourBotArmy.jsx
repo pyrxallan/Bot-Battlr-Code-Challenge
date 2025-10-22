@@ -1,88 +1,33 @@
+import BotCard from './BotCard';
+
 function YourBotArmy({ army, onRelease, onDischarge }) {
-  const botClasses = ["Support", "Medic", "Assault", "Defender", "Captain", "Witch"];
-  
-  const getBotForClass = (botClass) => {
-    return army.find(bot => bot.bot_class === botClass);
-  };
-
-  const getEmptySlotClass = (botClass) => {
-    switch (botClass) {
-      case 'Assault': return 'border-cyber-red';
-      case 'Defender': return 'border-cyber-blue';
-      case 'Support': return 'border-cyber-green';
-      case 'Medic': return 'border-cyber-cyan';
-      case 'Witch': return 'border-cyber-purple';
-      case 'Captain': return 'border-cyber-yellow';
-      default: return 'border-cyber-blue';
-    }
-  };
-
-  const getEmptySlotText = (botClass) => {
-    switch (botClass) {
-      case 'Assault': return 'text-cyber-red';
-      case 'Defender': return 'text-cyber-blue';
-      case 'Support': return 'text-cyber-green';
-      case 'Medic': return 'text-cyber-cyan';
-      case 'Witch': return 'text-cyber-purple';
-      case 'Captain': return 'text-cyber-yellow';
-      default: return 'text-cyber-cyan';
-    }
-  };
-
-  const armyCount = army.length;
-  const isArmyComplete = armyCount === 6;
+  if (army.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto p-6">
+        <h2 className="text-2xl font-orbitron text-cyber-purple mb-4">YOUR BOT ARMY</h2>
+        <div className="bg-cyber-dark border-2 border-cyber-purple rounded-lg p-8 text-center">
+          <p className="text-cyber-cyan text-lg mb-2">No bots enlisted yet</p>
+          <p className="text-gray-400">Click on a bot in the collection to view details and enlist!</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-2xl font-orbitron mb-4 text-cyber-purple">
-        {isArmyComplete ? (
-          <span className="text-cyber-green">YOUR BOT ARMY IS COMPLETE!</span>
-        ) : (
-          `YOUR BOT ARMY (${armyCount}/6)`
-        )}
+      <h2 className="text-2xl font-orbitron text-cyber-purple mb-4">
+        YOUR BOT ARMY ({army.length}/6)
       </h2>
-      
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-        {botClasses.map(botClass => {
-          const bot = getBotForClass(botClass);
-          const borderClass = getEmptySlotClass(botClass);
-          const textClass = getEmptySlotText(botClass);
-          
-          return (
-            <div key={botClass} className="min-h-[300px]">
-              {bot ? (
-                <div 
-                  className="cursor-pointer"
-                  onClick={() => onRelease(bot.id)}
-                >
-                  <BotCard 
-                    bot={bot}
-                    onBotClick={() => onRelease(bot.id)}
-                    onDischarge={onDischarge}
-                    isInArmy={true}
-                  />
-                </div>
-              ) : (
-                <div className={`bg-cyber-darker border-2 border-dashed ${borderClass} rounded-lg h-full min-h-[300px] flex flex-col items-center justify-center p-4 transition-all duration-300 hover:border-solid`}>
-                  <div className={`text-4xl mb-2 ${textClass}`}>
-                    {botClass === 'Assault' && '⚔️'}
-                    {botClass === 'Defender' && '🛡️'}
-                    {botClass === 'Support' && '🔧'}
-                    {botClass === 'Medic' && '🏥'}
-                    {botClass === 'Witch' && '🔮'}
-                    {botClass === 'Captain' && '👑'}
-                  </div>
-                  <h3 className={`text-lg font-orbitron font-bold ${textClass} mb-1`}>
-                    {botClass}
-                  </h3>
-                  <p className="text-gray-400 text-sm text-center">
-                    {isArmyComplete ? 'Slot filled' : 'Empty slot'}
-                  </p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+        {army.map(bot => (
+          <BotCard 
+            key={bot.id}
+            bot={bot}
+            onBotClick={() => onRelease(bot.id)}
+            onDischarge={() => onDischarge(bot.id)}
+            isInArmy={true}
+          />
+        ))}
       </div>
     </div>
   );
