@@ -1,6 +1,5 @@
 ## README.md
 
-```markdown
 # BOT BATTLR
 
 <div align="center">
@@ -19,7 +18,6 @@
 
 </div>
 
----
 
 ## Features
 
@@ -40,8 +38,6 @@
 - **Responsive Design** - Optimized for desktop and mobile devices
 - **Real-time Updates** - Instant feedback on all interactions
 - **Intuitive Controls** - Simple click-based bot management
-
----
 
 ## Installation & Setup
 
@@ -68,8 +64,6 @@ npm run server
 npm run dev
 ```
 
----
-
 ## Bot Classes
 
 | Class | Role | Specialty | Color Theme |
@@ -81,7 +75,6 @@ npm run dev
 | **Witch** | Specialist | Special Abilities | 🟣 Purple |
 | **Captain** | Leader | Balanced Stats | 🟡 Yellow |
 
----
 
 ## echnology Stack
 
@@ -99,8 +92,6 @@ npm run dev
 - **ES6+ JavaScript** - Modern JavaScript features
 - **Git** - Version control
 - **GitHub Pages** - Deployment platform
-
----
 
 ## Component Overview
 
@@ -124,7 +115,6 @@ npm run dev
 - Enables class-based filtering
 - Supports stat-based sorting
 
----
 
 ## Core Features Implementation
 
@@ -143,7 +133,6 @@ npm run dev
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
----
 
 ## Acknowledgments
 
@@ -153,7 +142,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - **JSON Server** - For the easy backend mock solution
 - **Cyberpunk Inspiration** - For the awesome thematic direction
 
----
 
 <div align="center">
 
