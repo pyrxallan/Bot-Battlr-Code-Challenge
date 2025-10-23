@@ -9,6 +9,11 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "homepage": "https://pyrxallan.github.io/Bot-Battlr-Code-Challenge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyrxallan/Bot-Battle-Code-Challenge.git"
+  },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
