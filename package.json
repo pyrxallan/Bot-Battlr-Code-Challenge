@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "proxy": "https://bot-battlr-code-challenge-saiz.onrender.com",
   "homepage": "https://pyrxallan.github.io/Bot-Battlr-Code-Challenge",
   "repository": {
     "type": "git",
