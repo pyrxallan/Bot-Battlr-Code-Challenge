@@ -13,8 +13,8 @@
 
 *A React-based robotic recruitment simulator where you assemble the perfect bot squad for epic battles*
 
-[![Live Demo](https://pyrxallan.github.io/Bot-Battlr-Code-Challenge)]
-[![Report Bug](https://github.com/your-username/bot-battlr/issues)]
+[![Live Demo](https://img.shields.io/badge/🚀-Live_Demo-8a2be2?style=for-the-badge)](https://pyrxallan.github.io/Bot-Battlr-Code-Challenge)
+[![Report Bug](https://img.shields.io/badge/🐛-Report_Bug-ff003c?style=for-the-badge)](https://github.com/your-username/bot-battlr/issues)
 
 </div>
 
@@ -147,7 +147,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ### **Ready to build your ultimate bot army?**
 
-[![Get Started](https://img.shields.io/badge/🚀-Get_Started-00ff41?style=for-the-badge&logo=rocket&logoColor=white)](https://your-username.github.io/bot-battlr)
+[![Get Started](https://img.shields.io/badge/🚀-Get_Started-00ff41?style=for-the-badge&logo=rocket&logoColor=white)](https://pyrxallan.github.io/bot-battlr)
 
 *"The future of warfare is here. Command your bots wisely."*
 
