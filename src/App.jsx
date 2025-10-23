@@ -4,7 +4,7 @@ import BotCollection from './components/BotCollection';
 import SortBar from './components/SortBar';
 
 function App() {
-  const API_URL = 'https://bot-battlr-backend-9q2m.onrender.com';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
   const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ function App() {
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8001/bots')
+    fetch(`${API_URL}/bots`)
       .then(res => res.json())
       .then(data => {
         setBots(data);
@@ -64,7 +64,7 @@ function App() {
 
   const dischargeBot = (botId) => {
   // Delete bot from backend and remove from both army and collection
-  fetch(`http://localhost:8001/bots/${botId}`, {
+  fetch(`${API_URL}/bots/${botId}`, {
     method: 'DELETE',
   })
     .then(() => {
