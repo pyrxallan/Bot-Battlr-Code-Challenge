@@ -1,0 +1,9 @@
+{
+  "name": "bot-battlr-backend",
+  "scripts": {
+    "start": "json-server --watch db.json --port $PORT --host 0.0.0.0"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}
