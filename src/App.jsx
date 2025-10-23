@@ -4,6 +4,7 @@ import BotCollection from './components/BotCollection';
 import SortBar from './components/SortBar';
 
 function App() {
+  const API_URL = 'https://bot-battlr-backend-9q2m.onrender.com';
   const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
   const [loading, setLoading] = useState(true);
