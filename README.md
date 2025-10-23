@@ -13,7 +13,7 @@
 
 *A React-based robotic recruitment simulator where you assemble the perfect bot squad for epic battles*
 
-[![Live Demo](https://img.shields.io/badge/🚀-Build_Your_Army-8a2be2?style=for-the-badge)](https://pyrxallan.github.io/Bot-Battlr-Code-Challenge)
+[![Live Demo](https://img.shields.io/badge/Build_Your_Army-8a2be2?style=for-the-badge)](https://pyrxallan.github.io/Bot-Battlr-Code-Challenge)
 
 *"Click the button above to build your army"*
 
