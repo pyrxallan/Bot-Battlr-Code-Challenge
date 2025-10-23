@@ -14,8 +14,8 @@
 
 *A React-based robotic recruitment simulator where you assemble the perfect bot squad for epic battles*
 
-[![Live Demo](https://img.shields.io/badge/🚀-Live_Demo-8a2be2?style=for-the-badge)](https://your-username.github.io/bot-battlr)
-[![Report Bug](https://img.shields.io/badge/🐛-Report_Bug-ff003c?style=for-the-badge)](https://github.com/your-username/bot-battlr/issues)
+[![Live Demo](https://pyrxallan.github.io/Bot-Battlr-Code-Challenge)]
+[![Report Bug](https://github.com/your-username/bot-battlr/issues)]
 
 </div>
 
@@ -43,24 +43,7 @@
 
 ---
 
-## How to Play
-
-### Building Your Army
-1. **Browse** the Bot Collection to see available recruits
-2. **Click** any bot to view its detailed specifications
-3. **Enlist** promising bots to join your army
-4. **Strategize** by selecting one bot from each class
-5. **Complete** your 6-bot roster for maximum power
-
-### Managing Your Forces
-- **Click** on enlisted bots to release them back to the collection
-- **Click** the red `×` button to permanently discharge a bot
-- **Use** filters and sorting to find the perfect bot for each role
-- **Monitor** your progress with the army completion counter
-
----
-
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js (version 14 or higher)
@@ -83,25 +66,6 @@ npm run server
 
 # Start the development server
 npm run dev
-```
-
-### Backend Setup
-The application requires a JSON server running on `http://localhost:8001` with the following endpoint:
-```json
-{
-  "bots": [
-    {
-      "id": 1,
-      "name": "Bot Name",
-      "health": 95,
-      "damage": 85,
-      "armor": 90,
-      "bot_class": "Assault",
-      "catchphrase": "Eliminate with extreme prejudice.",
-      "avatar_url": "https://robohash.org/bot1.png"
-    }
-  ]
-}
 ```
 
 ---
@@ -162,31 +126,7 @@ The application requires a JSON server running on `http://localhost:8001` with t
 
 ---
 
-## Deployment
-
-### GitHub Pages
-```bash
-# Build the project
-npm run build
-
-# Deploy to GitHub Pages
-npm run deploy
-```
-
-### Environment Setup
-Create environment-specific configuration for different deployment targets:
-
-```env
-# Development
-VITE_API_URL=http://localhost:8001
-
-# Production
-VITE_API_URL=https://your-backend-service.com
-```
-
----
-
-## 🎯 Core Features Implementation
+## Core Features Implementation
 
 ### State Management
 ```javascript
@@ -199,43 +139,13 @@ VITE_API_URL=https://your-backend-service.com
 }
 ```
 
-### Key Interactions
-- **Enlist**: Moves bot from collection to army
-- **Release**: Returns bot from army to collection
-- **Discharge**: Permanently removes bot from both
-- **View Details**: Opens bot specifications modal
-
----
-
-## Contributing
-
-We welcome contributions to enhance Bot Battlr! Here's how you can help:
-
-### Feature Requests
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Bug Reports
-Please use the [issue tracker](https://github.com/your-username/bot-battlr/issues) to report any bugs or suggest enhancements.
-
-### Development Guidelines
-- Follow React best practices
-- Maintain the cyberpunk theme consistency
-- Ensure responsive design
-- Add appropriate error handling
-
----
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **React Team** - For the amazing framework
 - **Vite Team** - For the fast build tool
@@ -255,23 +165,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 </div>
 ```
-
-## Key Features of This README:
-
-1. **🎨 Theme Matching**: Uses cyberpunk colors (green, blue, purple, red) and robotic emojis
-2. **📊 Clean Structure**: Organized with clear sections and appropriate heading levels
-3. **🛡️ Badges**: Custom-colored badges that match your app's theme
-4. **🎮 Interactive Feel**: Engaging language that matches the bot battle concept
-5. **📱 Responsive Design**: Uses markdown tables and centered elements
-6. **🔧 Technical Details**: Comprehensive setup and development information
-7. **🎯 Visual Hierarchy**: Clear sections with emoji icons for quick scanning
-
-## To Customize for Your Project:
-
-1. Replace `your-username` with your actual GitHub username
-2. Update the live demo link when you deploy
-3. Add your specific backend API details if different
-4. Include any additional features you implement
-5. Add screenshots of your actual application
-
-This README will give your project a professional, thematic presentation that matches the cyberpunk aesthetic of your Bot Battlr application!
