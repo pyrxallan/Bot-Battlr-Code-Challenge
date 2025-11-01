@@ -14,13 +14,12 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
   };
 
   const handleDischarge = (e) => {
-    e.stopPropagation(); // Prevent triggering the card click
+    e.stopPropagation(); 
     if (window.confirm(`Are you sure you want to discharge ${name} forever?`)) {
       onDischarge(bot.id);
     }
   };
 
-  // Handle card click - different behavior based on context
   const handleCardClick = () => {
     if (onBotClick) {
       onBotClick();
@@ -32,7 +31,6 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
       className="bg-cyber-dark rounded-lg overflow-hidden shadow-cyber border-2 border-cyber-blue hover:border-cyber-cyan transition-all duration-300 hover:transform hover:scale-105 relative cursor-pointer"
       onClick={handleCardClick}
     >
-      {/* Discharge Button (only in army) */}
       {isInArmy && !showDetails && (
         <button
           onClick={handleDischarge}
@@ -43,7 +41,6 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         </button>
       )}
 
-      {/* Bot Image */}
       <div className="relative">
         <img 
           src={avatar_url} 
@@ -60,12 +57,10 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         )}
       </div>
 
-      {/* Bot Info */}
       <div className="p-4">
         <h3 className="text-xl font-orbitron text-cyber-green mb-1">{name}</h3>
         <p className="text-cyber-cyan text-sm italic mb-3 truncate">"{catchphrase}"</p>
         
-        {/* Stats */}
         <div className="space-y-2">
           <div className="flex justify-between items-center text-sm">
             <span className="text-cyber-cyan">Health:</span>
@@ -81,7 +76,6 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
           </div>
         </div>
 
-        {/* Click to view details (only in collection) */}
         {showDetails && (
           <div className="mt-4 text-center">
             <span className="text-cyber-cyan text-sm font-orbitron">Click to view bot specs</span>
