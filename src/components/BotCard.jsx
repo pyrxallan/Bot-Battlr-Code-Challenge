@@ -84,7 +84,7 @@ function BotCard({ bot, onBotClick, onDischarge, isInArmy, showDetails = false }
         {/* Click to view details (only in collection) */}
         {showDetails && (
           <div className="mt-4 text-center">
-            <span className="text-cyber-cyan text-sm font-orbitron">Click to view details</span>
+            <span className="text-cyber-cyan text-sm font-orbitron">Click to view bot specs</span>
           </div>
         )}
       </div>
