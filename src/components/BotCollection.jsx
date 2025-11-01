@@ -22,7 +22,7 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
 
     const handleEnlist = () => {
       onEnlist(selectedBot);
-      onBotSelect(null); // Close the modal after enlist
+      onBotSelect(null); 
     };
 
     return (
@@ -40,7 +40,6 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
 
           <div className="p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Bot Image */}
               <div className="relative">
                 <img 
                   src={avatar_url} 
@@ -52,14 +51,12 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
                 </div>
               </div>
 
-              {/* Bot Info */}
               <div className="space-y-6">
                 <div>
                   <h3 className="text-4xl font-bold font-orbitron text-cyber-green mb-2">{name}</h3>
                   <p className="text-cyber-cyan text-lg italic">"{catchphrase}"</p>
                 </div>
 
-                {/* Stats */}
                 <div className="space-y-4">
                   <div className="bg-cyber-darker p-4 rounded-lg border border-cyber-blue">
                     <div className="flex justify-between items-center mb-2">
@@ -101,10 +98,9 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
                   </div>
                 </div>
 
-                {/* Enlist Button */}
                 <button
                   onClick={handleEnlist}
-                  className="w-full bg-cyber-green hover:bg-cyber-cyan text-cyber-dark font-orbitron text-xl py-4 px-6 rounded-lg transition-all duration-200 border-2 border-cyber-green hover:border-cyber-cyan shadow-cyber"
+                  className="w-full bg-cyber-green hover:bg-cyber-cyan text-cyber-dark font-orbitron text-xl text-stone-900 py-4 px-6 rounded-lg transition-all duration-200 border-2 border-cyber-green hover:border-cyber-cyan shadow-cyber"
                 >
                   ENLIST TO ARMY
                 </button>
@@ -116,8 +112,6 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
     );
   };
 
-  // Rest of the component remains the same...
-  // Main Collection View
   if (bots.length === 0) {
     return (
       <div className="max-w-7xl mx-auto p-6">
@@ -148,7 +142,6 @@ function BotCollection({ bots, army, selectedBot, onBotSelect, onEnlist }) {
         ))}
       </div>
       
-      {/* Bot Specs Modal */}
       {renderBotSpecs()}
     </div>
   );
