@@ -148,7 +148,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ### **Ready to build your ultimate bot army?**
 
-[![Get Started](https://img.shields.io/badge/🚀-Get_Started-00ff41?style=for-the-badge&logo=rocket&logoColor=white)](https://pyrxallan.github.io/bot-battlr)
+Deployed with github pages at : [![Get Started](https://img.shields.io/badge/🚀-Get_Started-00ff41?style=for-the-badge&logo=rocket&logoColor=white)](https://pyrxallan.github.io/bot-battlr)
 
 *"The future of warfare is here. Command your bots wisely."*
 
